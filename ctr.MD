@@ -18,3 +18,19 @@ http://scikit-learn.org/stable/auto_examples/ensemble/plot_feature_transformatio
 GBDT特征转换+LR总结 Facebook论文解读
 http://bourneli.github.io/ml/2017/05/25/gdbt-lr-facebook-paper.html
 
+https://www.jianshu.com/p/88e3fba82e39
+
+https://www.jianshu.com/p/5b73444eb47d
+
+https://www.infoq.cn/article/V0wtItKL7BAIyJ-WKoz8
+
+https://www.jiqizhixin.com/articles/Alibaba-deeplearning-framework-XDL-release
+
+https://www.cnblogs.com/Lee-yl/p/11252334.html
+
+https://www.qianzhan.com/analyst/detail/220/191115-7279feef.html
+
+https://t.qianzhan.com/daka/detail/180806-6f100876.html#comment
+
+https://www.qianzhan.com/analyst/detail/220/191113-d35584e4.html
+
