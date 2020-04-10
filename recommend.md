@@ -1,3 +1,22 @@
+[TOC]
+
+
+# 推荐系统
+
+## 推荐系统的目的
+
+### 发掘长尾
+
+理论基础是长尾理论，一小部分最热的资源得到大量的关注，而剩下的一大部分资源却无人问津，这不仅导致了资源的浪费，也让小众的用户无法找到自己感兴趣的内容
+
+### 解决信息过载
+
+提高信息利用率
+
+### 提高点击率/转化率
+
+### 个性化服务
+
 # 召回
 
 [针对2.2亿人的推荐系统的重构技术解析](https://dbaplus.cn/news-141-2482-1.html)
@@ -11,9 +30,11 @@
 [召回和排序常用算法实现](https://lumingdong.cn/technology-evolution-trend-of-recommendation-system.html)
 
 
-# reference
-===
 
+# 排序
+
+
+# reference
 
 https://tech.meituan.com/dl.html (深度学习在美团点评推荐平台排序中的运用)
 https://tech.meituan.com/mt-recommend-practice.html (美团推荐算法实践)
