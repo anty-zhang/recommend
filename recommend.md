@@ -17,6 +17,238 @@
 
 ### 个性化服务
 
+## 推荐系统发展过程
+
+- 嵌入(Embedding)和MLP范式: 原始特征嵌入到低维向量中，然后输入到MLP中以获得最终推荐结果。优势是可以连接不同的特征，缺点是忽略了用户行为的连续性。
+
+- 使用Transformer模型捕获用户行为的序列信号
+
+
+# 推荐系统研究方向
+
+## CTR预估
+
+[华为若亚.2003.AutoFIS: Automatic Feature Interaction Selection in Factorization Models for Click-Through Rate Prediction](https://arxiv.org/abs/2003.11235)
+
+介绍: 本文采用AutoML的搜索方法选择重要性高的二次特征交互项、去除干扰项，提升FM、DeepFM这类模型的准确率
+
+[京东.2006.Category-Specific CNN for Visual-aware CTR Prediction at JD.com](https://arxiv.org/abs/2006.10337)
+
+[Facebook.2207.Towards Automated Neural Interaction Discovering for Click-Through Rate Prediction](https://arxiv.org/abs/2007.06434)
+
+## TopN推荐
+
+1. Dual Channel Hypergraph Collaborative Filtering 【百度】
+
+笔记：https://blog.csdn.net/weixin_42052231/article/details/107710301
+2. Probabilistic Metric Learning with Adaptive Margin for Top-K Recommendation 【华为诺亚】
+
+3. Controllable Multi-Interest Framework for Recommendation 【阿里】
+
+论文：https://arxiv.org/abs/2005.09347
+4. Embedding-based Retrieval in Facebook Search 【Facebook】
+
+论文：https://arxiv.org/abs/2006.11632
+5. On Sampling Top-K Recommendation Evaluation
+
+
+
+## 对话式推荐
+
+1. Evaluating Conversational Recommender Systems via User Simulation
+
+论文：https://arxiv.org/abs/2006.08732
+2. Improving Conversational Recommender Systems via Knowledge Graph based Semantic Fusion
+
+论文：https://arxiv.org/abs/2007.04032
+3. Interactive Path Reasoning on Graph for Conversational Recommendation
+
+论文：https://arxiv.org/abs/2007.00194
+
+## 序列推荐
+
+1. Disentangled Self-Supervision in Sequential Recommenders 【阿里】
+
+论文：http://pengcui.thumedialab.com/papers/DisentangledSequentialRecommendation.pdf
+2. Handling Information Loss of Graph Neural Networks for Session-based Recommendation
+
+3. Maximizing Cumulative User Engagement in Sequential Recommendation: An Online Optimization Perspective 【阿里】
+
+论文：https://arxiv.org/pdf/2006.04520.pdf
+
+## GNN
+
+
+## 强化学习
+
+1. Jointly Learning to Recommend and Advertise 【字节跳动】
+
+论文：https://arxiv.org/abs/2003.00097
+2. BLOB: A Probabilistic Model for Recommendation that Combines Organic and Bandit Signals 【Criteo】
+
+3. Joint Policy-Value Learning for Recommendation 【Criteo】
+
+论文：https://www.researchgate.net/publication/342437800_Joint_Policy-Value_Learning_for_Recommendation
+
+
+## 迁移学习
+
+1. Learning Transferrable Parameters for Long-tailed Sequential User Behavior Modeling 【Salesforce】
+
+2. Semi-supervised Collaborative Filtering by Text-enhanced Domain Adaptation 【阿里】
+
+论文：https://arxiv.org/abs/2007.07085
+
+## 多任务学习
+
+1. Privileged Features Distillation at Taobao Recommendations 【阿里】
+
+论文：https://arxiv.org/abs/1907.05171
+
+
+
+## AutoML
+
+1. Neural Input Search for Large Scale Recommendation Models 【Google】
+
+论文：https://arxiv.org/abs/1907.04471
+2. Towards Automated Neural Interaction Discovering for Click-Through Rate Prediction 【Facebook】
+
+论文：https://arxiv.org/abs/2007.06434
+
+## 元学习
+
+## Graph-based Recommendation
+
+1. A Framework for Recommending Accurate and Diverse Items Using Bayesian Graph Convolutional Neural Networks 【华为诺亚】
+
+2. An Efficient Neighborhood-based Interaction Model for Recommendation on Heterogeneous Graph 【Amazon】
+
+论文：https://arxiv.org/abs/2007.00216
+3. M2GRL: A Multi-task Multi-view Graph Representation Learning Framework for Web-scale Recommender Systems 【阿里】
+
+简介：本文通过关联多个视角的图(item-item图、item-shop图、shop-shop图等)增强item表征，用于item召回。
+论文：https://arxiv.org/abs/2005.10110
+4. Handling Information Loss of Graph Neural Networks for Session-based Recommendation
+
+5. Interactive Path Reasoning on Graph for Conversational Recommendation
+
+论文：https://arxiv.org/abs/2007.00194
+6. A Dual Heterogeneous Graph Attention Network to Improve Long-Tail Performance for Shop Search in E-Commerce 【阿里】
+
+7. Gemini: A Novel and Universal Heterogeneous Graph Information Fusing Framework for Online Recommendations 【滴滴】
+
+
+## Embedding and Representation
+
+1. Compositional Embeddings Using Complementary Partitions for Memory-Efficient Recommendation Systems 【Facebook】
+
+论文：https://arxiv.org/abs/1909.02107
+2. PinnerSage: Multi-Modal User Embedding Framework for Recommendations at Pinterest 【Pinterest】
+
+论文：https://arxiv.org/abs/2007.03634
+3. SimClusters: Community-Based Representations for Heterogeneous Recommendations at Twitter 【Twitter】
+
+4. Time-Aware User Embeddings as a Service 【Yahoo】
+
+论文：https://astro.temple.edu/~tuf28053/papers/pavlovskiKDD20.pdf
+
+
+## Federated Learning
+
+1. FedFast: Going Beyond Average for Faster Training of Federated Recommender Systems
+
+
+## Evaluation
+
+1. Counterfactual Evaluation of Slate Recommendations with Sequential Reward Interactions 【Netflix, Spotify】
+
+论文：https://arxiv.org/abs/2007.12986
+2. Evaluating Conversational Recommender Systems via User Simulation
+
+论文：https://arxiv.org/abs/2006.08732
+3. On Sampled Metrics for Item Recommendation 【Google】
+
+4. On Sampling Top-K Recommendation Evaluation
+
+
+
+## Debiasing
+
+1. Debiasing Grid-based Product Search in E-commerce 【Etsy】
+
+论文：http://www.public.asu.edu/~rguo12/kdd20.pdf
+2. Counterfactual Evaluation of Slate Recommendations with Sequential Reward Interactions 【Netflix, Spotify】
+
+论文：https://arxiv.org/abs/2007.12986
+3. Attribute-based Propensity for Unbiased Learning in Recommender Systems: Algorithm and Case Studies 【Google】
+
+论文：https://research.google/pubs/pub49273/
+## POI Recommendation
+1. Geography-Aware Sequential Location Recommendation 【Microsoft】
+
+论文：http://staff.ustc.edu.cn/~liandefu/paper/locpred.pdf
+
+Cold-Start Recommendation
+1. MAMO: Memory-Augmented Meta-Optimization for Cold-start Recommendation
+
+论文：https://arxiv.org/abs/2007.03183
+2. Meta-learning on Heterogeneous Information Networks for Cold-start Recommendation
+
+论文：https://ink.library.smu.edu.sg/cgi/viewcontent.cgi?article=6158&context=sis_research
+
+## Others
+1. Improving Recommendation Quality in Google Drive 【Google】
+
+论文：https://research.google/pubs/pub49272/
+2. Temporal-Contextual Recommendation in Real-Time 【Amazon】
+
+论文：https://assets.amazon.science/96/71/d1f25754497681133c7aa2b7eb05/temporal-contextual-recommendation-in-real-time.pdf
+
+
+TODO
+
+[精选了 10 篇来自 SIGIR 2020、KDD 2020 等顶会的最新论文](https://www.jiqizhixin.com/articles/2020-06-22-6)
+
+[AAAI2020推荐系统论文集锦](https://zhuanlan.zhihu.com/p/102949266)
+
+[RSPapers](https://github.com/hongleizhang/RSPapers)
+
+
+[前沿 | BERT在eBay推荐系统中的实践](https://mp.weixin.qq.com/s/tOVgW9cRsbbcRN5d6WPYPQ)
+
+[Transformer 在推荐模型中的应用总结](https://www.infoq.cn/article/WMSD1O57YAeDxJC6kAk6?utm_source=related_read_bottom&utm_medium=article)
+
+[阿里将 Transformer 用于淘宝电商推荐，效果优于 DIN 和谷歌 WDL](https://www.infoq.cn/article/OJvS7h8JXvD4XCW*qldw?utm_source=related_read_bottom&utm_medium=article)
+
+[BERT 在 eBay 推荐系统中的实践(解决冷启动问题)](https://www.infoq.cn/article/dtexvmmvedzjyu7hgcxc)
+
+[【推荐系统】近期必读的6篇顶会WWW2020【推荐系统】相关论文-Part3](https://posts.careerengine.us/p/5e95e0f679c80622c44d0292)
+
+[KDD 2020 推荐系统论文一览](https://blog.csdn.net/abcdefg90876/article/details/108177820)
+
+[I-2020新资源推荐算法一览、实践](https://blog.csdn.net/ngadminq/article/details/109234978)
+
+[2020年推荐系统工程师炼丹手册](https://zhuanlan.zhihu.com/p/247941842)
+
+[AAAI2020推荐系统论文集锦](https://zhuanlan.zhihu.com/p/102949266)
+
+[近期有哪些值得读的推荐系统论文？来看看这份私人阅读清单](https://www.jiqizhixin.com/articles/2020-06-22-6)
+
+[推荐算法最前沿 | KDD 2020推荐算法论文一览（内附下载链接）](https://cloud.tencent.com/developer/article/1748462)
+
+[NLP预训练模型-Transformer：从原理到实战](https://blog.csdn.net/linxid/article/details/84321617)
+
+[Transformer原理以及文本分类实战](https://blog.csdn.net/qq_36618444/article/details/106472126)
+
+[图解Bert系列之Transformer实战](http://www.uml.org.cn/ai/2019101114.asp)
+
+[Transformer论文翻译](https://blog.csdn.net/qq_29695701/article/details/88096455)
+
+[如何快速跟进NLP领域最新技术？(文献阅读清单)](https://baijiahao.baidu.com/s?id=1634402434762249222&wfr=spider&for=pc)
+
+[深度学习中的注意力模型（2017版）](https://zhuanlan.zhihu.com/p/37601161)
+
 # 召回
 
 ## 召回模块的演进过程 (TODO)
