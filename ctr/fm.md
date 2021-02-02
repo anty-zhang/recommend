@@ -32,7 +32,7 @@ $y = w_0 + \sum_{i=1}^n w_i x_i + \sum_{i=1}^{n-1} \sum_{j=i+1}^n w_{ij} x_i x_j
 
 该多项式模型与线性模型相比，多了特征组合的部分，特征组合部分的参数有 $C_n^2 = \frac{n(n-1)}{2}$ 复杂度为 $n^2$。如果特征非常稀疏且维度很高的话，时间复杂度大大增加。
 
-为了求出 $w_{ij}$，我们对每一个特征分量$x_i$ 引入辅助向量 $v_i = (v_{i1}, v_{i2}, ..., v_{ik} $ ，然后利用 $v_i v_j^T 对w_{ij}$ 进行求解
+为了求出 $w_{ij}$，我们对每一个特征分量$x_i$ 引入辅助向量 $v_i = (v_{i1}, v_{i2}, ..., v_{ik})$ ，然后利用 $v_i v_j^T 对w_{ij}$ 进行求解
 
 <font color='red'> 时间复杂度将为 O(kn) </font>
 
@@ -58,29 +58,29 @@ $= 1/2 \sum_{f=1}^k ( (\sum_{i=1}^n v_{i,f} x_i)^2 - \sum_{i=1} v_{i,f}^2 x_i^2 
 
 - 损失函数和成本函数推导
 
-[LR 损失函数推导](https://github.com/anty-zhang/machine_learning/blob/master/loss_function/loss_function.md)
+[LR 损失函数推导](https://github.com/anty-zhang/recommend/blob/master/loss_function/loss_function.md)
 
-$\begin{array}{l}
+$$\begin{array}{l}
 L(y,\widehat y) = \sum\limits_{i = 1}^m { - \log \sigma ({y^{(i)}}{{\widehat y}^{(i)}})} \\
 \frac{{\partial L(y,\widehat y)}}{{\partial \theta }} =  - \frac{1}{{\sigma (y\widehat y)}}\sigma (y\widehat y)(1 - \sigma (y\widehat y))y\frac{{\partial \widehat y}}{{\partial \theta }}\\
  = (\sigma (y\widehat y) - 1)y\frac{{\partial \widehat y}}{{\partial \theta }}
-\end{array}$
+\end{array}$$
 
-$\begin{array}{l}
+$$\begin{array}{l}
 \widehat y = {w_0} + \sum\limits_{i = 1}^n {{w_i}{x_i} + } \sum\limits_{i = 1}^{n - 1} {\sum\limits_{j = i + 1}^n {{w_{ij}}{x_i}{x_j}} } \\
  = {w_0} + \sum\limits_{i = 1}^n {{w_i}{x_i} + } 1/2\sum\limits_{f = 1}^k {((} \sum\limits_{i = 1}^n {{v_{i,f}}} {x_i}{)^2} - \sum\limits_{i = 1} {v_{i,f}^2} x_i^2)\\
 L(y,\widehat y) = \sum\limits_{i = 1}^m { - \log \sigma ({y^{(i)}}{{\widehat y}^{(i)}})} \\
 \frac{{\partial L(y,\widehat y)}}{{\partial \theta }} =  - \frac{1}{{\sigma (y\widehat y)}}\sigma (y\widehat y)(1 - \sigma (y\widehat y))y\frac{{\partial \widehat y}}{{\partial \theta }}\\
  = (\sigma (y\widehat y) - 1)y\frac{{\partial \widehat y}}{{\partial \theta }}
-\end{array}$
+\end{array}$$
 
-$\begin{array}{l}
+$$\begin{array}{l}
 \frac{{\partial \widehat y}}{{\partial \theta }} = \left\{\begin{matrix} \\
 1 & if \quad \theta  = {w_0}\\
 {x_i} & if \quad \theta  = {w_i}\\
 {x_i}\sum\limits_{j = 1}^n {{v_{j,f}}{x_j} - {v_{i,f}} x_i^2}  & if \quad \theta  = {v_{i,f}} \\
 \end{matrix} \right.
-\end{array}$
+\end{array}$$
 
 - 参数更新逻辑
 
@@ -115,3 +115,160 @@ $\begin{array}{l}
 [FM算法及FFM算法((1, -1) logistic loss解释)](https://www.cnblogs.com/ljygoodgoodstudydaydayup/p/6340129.html)
 
 [推荐系统召回四模型之：全能的FM模型](https://zhuanlan.zhihu.com/p/58160982)
+
+
+
+# DeepFM
+
+在基于CTR预估的推荐系统中，最重要的是学习到用户 <font color='red'>点击行为背后隐藏的特征组合</font>。 在不同的推荐场景中<font color='red'>低阶特征组合或者高阶特征组合</font> 可能都会对最终的CTR产生影响。
+
+## DeepFM提出的原因
+
+### 人工特征工程存在的两个问题
+
+1. 特征爆炸。通常使用的Poly-2模型为例，该模型采用直接对2阶特征组合建模来学习权重，这种方式构造的特征数据量跟特征个数乘积相关。
+2. 大量重要的特征组合隐藏在数据中，无法被专家识别或者设计。
+
+### 广度模型
+
+针对人工特征工程存在的两个问题，广度模型和深度模型都提出了不同的解决思路。其中广度模型包括FM/FFM等大规模低秩(Low-Rank)模型, FM/FFM 通过对特征的低秩展开，为每个特征构造隐士向量，并通过隐士向量的点乘结果来建模两个特征的组合关系，从而实现对二阶特组合的自动学习。
+
+FM/FFM相对于Poly-2优势有如下两点：
+
+1. FM/FFM模型所需要的参数个数远小于Poly-2模型，所需要的参数个数为 O(nm)，其中k 为隐式向量维度，n为特征个数；Poly-2模型为每个二阶特征组合需要的参数个数为O(m^2)。poly-2在特征进行one-hot之后，样本会变得稀疏。
+2. 相比于Poly-2，FM/FFM能够更有效的学习参数（泛化能力强）。当一个2阶特征组合没有出现在训练集时，Poly-2模型则无法学习该特征组合的权重；但FM/FFM却依然可以学习，因为该特征组合的权重是由这2个特征的隐式向量点乘得到的，而这两个特征的隐式向量可以由别的特征组合学习到。例如：即使在训练数据中两个特征组合并为见过，意味着 $x_i， x_j$ 一起出现的次数为0，如果换做SVM、LR模式是无法学会着特特征组合的权重的。而对于FM学习的是单个特征的embedding，并不依赖某个特定的特征组合是否出现过，所以只要特征 $x_i$和其他任意特征组合出现过，那么就可以学习到自己对应的embedding向量。因此可以通过内积计算出这个新特征组合的权重，这也可是说是FM模型泛化能力强的根本原因。
+
+总之，FM/FFM是一种有效地对二阶特征组合进行自动学习的模型
+
+### 深度模型
+
+通过神经网络结构和非线性激活函数，自动学习特征之间复杂的组合关系。目前在APP推荐领域中比较流行的深度模型有FNN/PNN/Wide and Deep。
+
+FNN模型：用FM模型来对Embedding层进行初始化的全连接神经网络。
+
+PNN模型：在Embedding层和全连接层之间引入内积/外积 层，来学习特征之间的交互关系
+
+Wide and Deep模型：将LR和DNN联合训练
+
+### DeepFM模型优势
+
+<font color='red'>
+广度模型(LR/FM/FFM)的局限：一般只能学习1阶，2阶特征组合
+
+深度模型(FNN/PNN)的局限：一般学习的是高阶特征组合
+
+Wide and Depp局限：依然需要人工特征工程来为Wide模型选取输入特征
+
+DeepFM模型：结合了广度和深度模型的优点，联合训练FM和DNN模型，同时学习低阶和高阶特征组合。
+
+无论是低阶特征组合还是高阶特征组合，对推荐效果都是非常重要的 </font>，其中总结DeepFM优点有如下两点：
+
+1. DeepFM模型同时对低阶特征组合和高阶特征组合建模，从而能够学习到各阶特征之间的组合关系
+2. DeepFM模型是一个端到端的模型，不需要任何的人工特征工程
+
+此外，DeepFM模型的Deep component和FM component从Embedding层共享数据输入，这样做的好处是Embedding层的隐式向量在(残差反向传播)训练时可以同时接受到Deep component和FM component的信息，从而使Embedding层的信息表达更加准确而最终提升推荐效果
+
+## DeepFM 算法原理
+
+DeepFM系统框图
+
+![](./img/deepfm-1.jpg)
+
+DeepFM包含两部分，左边的FM部分和右边的DNN部分。这两部分共享相同的输入。对于给定的特征i, $w_i$用于表示一阶特征的重要性，特征i的隐向量(latent vector) $V_i$ 用户表示和其他特征的相互影响。在FM部分，$V_i$ 用于表征二阶特征，同时在神经网络部分用于构建高阶特征。对于当前模型，所有的参数共同参与训练。DeepFM的预测结果可以写为
+
+$y = sigmoid (y_{FM} + y_{DNN})$
+
+$y \in (0, 1)$ 是预测的CTR， $y_{FM}$ 是FM部分得到的结果， $y_{DNN}$是DNN部分的结果
+
+对于FM部分
+
+$y_{FM} = w_0 + \sum_{i=1}^n w_i x_i + \sum_{i=1}^{n-1} \sum_{j=i+1}^n <v_i, v_j> x_i x_j$
+
+![](./img/deepfm-2.jpg)
+
+对于神经网络DNN部分，其模型如下所示
+
+![](./img/deepfm-3.jpg)
+
+深度部分是一个前馈神经网络，可以学习高阶的特征组合。需要注意的是原始的输入的数据是很多个字段的高维稀疏数据。因此引入一个embedding layer将输入向量压缩到低维稠密向量。 
+embedding layer的结构如下图所示，
+
+![](./img/deepfm-4.jpg)
+
+embedding layer有两个有趣的特性：
+
+- 输入数据的每个字段的特征经过embedding之后，都为k维(lantent vector的维度),所以embedding后的特征维度是 字段数×k
+- 在FM里得到的隐变量V现在作为了嵌入层网络的权重,FM模型作为整个模型的一部分与其他深度学习模型一起参与整体的学习, 实现端到端的训练。
+
+## reference
+
+[DeepFM 论文](https://arxiv.org/pdf/1703.04247.pdf)
+
+
+[CTR预估算法之FM, FFM, DeepFM及实践](https://blog.csdn.net/John_xyz/article/details/78933253)
+
+[美团-深入FFM原理与实践](https://tech.meituan.com/2016/03/03/deep-understanding-of-ffm-principles-and-practices.html)
+
+[推荐系统遇上深度学习(二)--FFM模型理论和实践](https://cloud.tencent.com/developer/article/1096536)
+
+[FFM 论文](https://www.csie.ntu.edu.tw/~cjlin/papers/ffm.pdf)
+
+[libffm](https://github.com/guestwalk/libffm)
+
+
+
+# FFM
+
+FFM 把相同性质的特征归于同一个filed。例如，广告分类为例，“Day=26/11/15”、“Day=1/7/14”、“Day=19/2/15”这三个特征都是代表日期的，可以放到同一个field中。同理，商品的末级品类编码生成了550个特征，这550个特征都是说明商品所属的品类，因此它们也可以放到同一个field中。简单来说，同一个categorical特征经过One-Hot编码生成的数值特征都可以放到同一个field，包括用户性别、职业、品类偏好等。
+
+在FFM中，每一维特征 $x_i$，针对其它特征的每一种field $f_j$，都会学习一个隐向量 
+$v_{i,f_j}$。因此，隐向量不仅与特征相关，也与field相关。也就是说，“Day=26/11/15”这个特征与“Country”特征和“Ad_type”特征进行关联的时候使用不同的隐向量，这与“Country”和“Ad_type”的内在差异相符，也是FFM中“field-aware”的由来。
+
+## FFM理论
+
+假设样本的n个特征属于 f 个field，那么FFM的二次项有 nf 个隐向量。而在FM模型中，每一维特征的隐向量只有一个，因此FM可以看作FFM的特例，是把所有特征都归于一个field时的FFM模型。根据FFM的field敏感特性，可以导出模型方程为：
+
+$y(x) = w_0 + \sum_{i=1}^n w_i x_i + \sum_{i=1}^{n-1} \sum_{j=i+1}^n <v_{i,f_j}, v_{j,f_i}> x_i x_j$
+
+其中， $f_j$是第j个特征的所属的filed。如果隐向量的长度为k，那么FFM的二次参数有 nfk个，远多于FM模型的nk个。
+此外，由于隐向量与field相关，FFM二次项并不能够化简，其预测复杂度为 O(kn^2)
+
+下面以一个例子简单说明FFM的特征组合方式[9]。输入记录如下
+
+![](./img/ffm-1.jpg)
+
+这条记录可以编码成5个特征，其中“Genre=Comedy”和“Genre=Drama”属于同一个field，“Price”是数值型，不用One-Hot编码转换。为了方便说明FFM的样本格式，我们将所有的特征和对应的field映射成整数编号。
+
+![](./img/ffm-2.jpg)
+
+那么，FFM的组合特征有10项，如下图所示。
+
+![](./img/ffm-3.jpg)
+
+其中，红色是field编号，蓝色是特征编号，绿色是此样本的特征取值。二次项的系数是通过与特征field相关的隐向量点积得到的，二次项共有 $\frac {n(n−1)}{2}$ 个。
+
+## FFM损失函数
+
+这里讲得只是一种FFM的实现方式，并不是唯一的。FFM将问题定义为分类问题，使用的是logistic loss，同时加入了正则项
+
+$min_w \sum_{i=1}^L log(1 + exp{-y_i \phi(w, x_i)}) + \lambda / 2 ||w||^2$
+
+where $y_i \in {-1, 1}$
+
+## FFM实战
+
+https://github.com/princewen/tensorflow_practice/tree/master/recommendation-FFM-Demo
+
+## FFM优缺点
+
+- 优点： 细化隐向量的表示，同一特征针对不同的filed使用不同的隐向量，模型建模更加准确
+
+- 缺点：计算复杂度比较高，参数个数为 nkf，计算复杂度为O(k * n^2)
+
+## 使用FFM需要注意的地方
+
+- 样本归一化。否则容易造成数据溢出，梯度计算失败
+- 特征归一化。消除不同特征取值范围不同，量纲不同造成问题。
+- FFM容易过拟合。因此可以采用dropout
+- 省略零值特征。零值特征对模型没有任何贡献，不论是1次项还是2次项都为0
+
