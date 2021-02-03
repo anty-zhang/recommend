@@ -272,3 +272,6 @@ https://github.com/princewen/tensorflow_practice/tree/master/recommendation-FFM-
 - FFM容易过拟合。因此可以采用dropout
 - 省略零值特征。零值特征对模型没有任何贡献，不论是1次项还是2次项都为0
 
+## reference
+
+[CTR and NLP](https://blog.csdn.net/weixin_37947156/article/details/95638910)
