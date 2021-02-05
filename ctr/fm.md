@@ -275,3 +275,56 @@ https://github.com/princewen/tensorflow_practice/tree/master/recommendation-FFM-
 ## reference
 
 [CTR and NLP](https://blog.csdn.net/weixin_37947156/article/details/95638910)
+
+
+# xDeepFM
+
+## xDeepFM 的优势
+
+- 传统交叉特征缺点
+
+对于预测性系统来讲，特征工程起到非常重要的作用，其中挖掘交叉特征也是至关重要的。交叉特征是指两个或者多个原始特征之间的交叉组合。传统的推荐系统，挖掘交叉特征主要靠人工提取，主要有如下三个缺点
+
+> 1. 重要的特征都与应用场景息息相关，针对于每个场景都要花费大量时间和精力了解数据的规律后才能设计和提取有效的高阶特征组合;
+>
+> 2. 原始数据中包含大量的稀疏特征，交叉的特征维度空间是原始特征维度的乘积，容易造成维度灾难
+>
+> 3. 人工提取特征无法泛化到未曾在训练样本中出现过的模式中
+
+- 基于深度学习的交叉特征缺点
+
+目前大部分研究工作都是基于因子分解机框架，利用多层全连接神经网络自动学习特征间的高阶交互关系，例如FNN、PNN、DeepFM等，其缺点是模型学习到的隐式的交叉特征，形式是未知的、不可控的; 另外是特征交互是发生在元素级(bit-wise)而不是特征向量之间(vector-wise)，这一点违背了因子分解机的初衷。
+
+- xDeepFM 的优势
+
+> 1. 能够同时以显式和隐式的方式自动学习到高阶交互特征。
+>
+> 2. 特征交互发生在向量级，同时兼具记忆和泛化的学习能力。
+
+- bit-wise VS vector-wise
+
+> 例如: 隐向量维度为3维, (a1,b1,c1) 和(a2,b2,c3)交互，那么元素集(bit-wise)为 f(w1*a1*a2, w2*b1*b2, w3*c1*c2); 而向量级(vector-wise) 为 f(w(a1*a2, b1*b2, c1*c2))。
+
+- explicitly VS implicitly
+
+> 显式的特征交互和隐式的特征交互。以两个特征为例xi和xj，在经过一系列变换后，我们可以表示成 wij * (xi * xj)的形式，就可以认为是显式特征交互，否则的话，是隐式的特征交互。
+
+## xDeepFM模型
+
+### Compressed Interaction Network(CIN)
+
+计算公式: $X^k_{h,*} = \sum_{i=1}^{H_{k-1}} \sum_{j=1}^m W^{k,h}_{ij}(X^{k-1}_{i,*} \circ X^{0}_{j,*})$
+
+隐层的计算可以分成两个步骤:（1）根据前一层隐层的状态$X_k$ 和原特征矩阵 $X_0$，计算出一个中间结果 $Z_{k+1}$，它是一个三维的张量，如下图所示：
+
+![](./img/xdeepfm-1.png)
+
+在这个中间结果上，我们用$H_{k+1}$ 个尺寸为 $m*H_k$ 的卷积核生成下一层隐层的状态，该过程如图2所示
+
+## reference
+
+[2018-xDeepFM: Combining Explicit and Implicit Feature Interactions for Recommender Systems](https://arxiv.org/pdf/1803.05170.pdf)
+
+[xDeepFM模型](https://blog.csdn.net/u010772289/article/details/104147138)
+
+[推荐系统遇上深度学习(二十二)--DeepFM升级版XDeepFM模型强势来袭！](https://www.jianshu.com/p/b4128bc79df0)
