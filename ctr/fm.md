@@ -204,8 +204,13 @@ embedding layer有两个有趣的特性：
 
 [DeepFM 论文](https://arxiv.org/pdf/1703.04247.pdf)
 
-
 [CTR预估算法之FM, FFM, DeepFM及实践](https://blog.csdn.net/John_xyz/article/details/78933253)
+
+[推荐系统 - DeepFM架构详解(TODO)](https://blog.csdn.net/maqunfi/article/details/99635620)
+
+[推荐系统遇上深度学习(三)--DeepFM模型理论和实践(TODO)](https://www.jianshu.com/p/6f1c2643d31b)
+
+[利用源码对deepfm中的fm层 dnn层进行讲解（五）(TODO)](https://blog.csdn.net/a1066196847/article/details/101158787)
 
 [推荐系统 - DeepFM架构详解(TODO)](https://blog.csdn.net/maqunfi/article/details/99635620)
 
