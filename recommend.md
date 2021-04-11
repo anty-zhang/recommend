@@ -379,3 +379,13 @@ https://www.ershicimi.com/p/a27ec89febf5c0ffd13b9fc7fb510439
 https://ailab-aida.github.io/2019/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9A%84%E7%89%B9%E5%BE%81%E9%80%89%E6%8B%A9/#more
 
 
+[TODO 深度学习推荐系统、CTR预估工业界实战论文整理分享](https://view.inews.qq.com/a/20201219A02ZJJ00)
+
+[TODO 深度学习模型实战-深度学习模型在各大公司实际生产环境的应用讲解文章](https://github.com/DA-southampton/Tech_Aarticle)
+
+[TODO 推荐！李宏毅《机器学习》国语课程(2021)上线！](https://zhuanlan.zhihu.com/p/353776276)
+
+[TODO CTR预估模型发展历程(转)](https://zhuanlan.zhihu.com/p/104307718)
+
+[TODO 目前工业界常用的推荐系统模型有哪些？](https://www.zhihu.com/question/314773668?sort=created)
+
