@@ -1,4 +1,4 @@
-[TOC]
+[[TOC]]
 
 
 # 推荐系统
@@ -23,6 +23,24 @@
 
 - 使用Transformer模型捕获用户行为的序列信号
 
+# ACM Recsys主要话题
+
+## 推荐系统模型/效果评估
+
+## 学术到工业的跨越问题
+
+## 健壮性及推荐系统安全性
+
+
+# 推荐系统应用场景
+
+## 在线视频
+
+## 电商网站
+
+## 在线音乐
+
+## 社交网络
 
 # 推荐系统研究方向
 
@@ -206,6 +224,8 @@ Cold-Start Recommendation
 论文：https://assets.amazon.science/96/71/d1f25754497681133c7aa2b7eb05/temporal-contextual-recommendation-in-real-time.pdf
 
 
+[推荐系统圈的高端聚会这十年在谈些什么？刑无刀](https://zhuanlan.zhihu.com/p/34083992)
+
 TODO
 
 [精选了 10 篇来自 SIGIR 2020、KDD 2020 等顶会的最新论文](https://www.jiqizhixin.com/articles/2020-06-22-6)
@@ -388,4 +408,9 @@ https://ailab-aida.github.io/2019/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%
 [TODO CTR预估模型发展历程(转)](https://zhuanlan.zhihu.com/p/104307718)
 
 [TODO 目前工业界常用的推荐系统模型有哪些？](https://www.zhihu.com/question/314773668?sort=created)
+
+[【CTR预估】互联网大厂CTR预估前沿进展 重要TODO](https://blog.csdn.net/fengdu78/article/details/112792061)
+
+[谷歌、阿里、微软等 10 大深度学习 CTR 模型最全演化图谱【推荐、广告、搜索领域】重要TODO](https://www.6aiq.com/article/1557332028652)
+
 
