@@ -54,6 +54,9 @@
 
 [Facebook.2207.Towards Automated Neural Interaction Discovering for Click-Through Rate Prediction](https://arxiv.org/abs/2007.06434)
 
+
+### transformers在CTR中的应用
+
 ## TopN推荐
 
 1. Dual Channel Hypergraph Collaborative Filtering 【百度】
