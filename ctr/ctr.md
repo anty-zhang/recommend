@@ -1,5 +1,31 @@
+[TOC]
 
-# reference
+
+# ​CTR点击率预估系列家谱
+
+![](./img/ctr_family.jpg)
+
+![](./img/ctr_family_2.jpg)
+
+
+# BLOG
+
+[CTR 预估模型家族关系1](https://zhuanlan.zhihu.com/p/243243145)
+
+[CTR 预估模型家族关系2](https://zhuanlan.zhihu.com/p/104307718)
+
+[transformers在ctr中的应用](https://zhuanlan.zhihu.com/p/349509932)
+
+
+
+# Paper
+
+[R-RNN: Extracting User Recent Behavior Sequence for Click-Through Rate Prediction](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8758622)
+
+
+
+
+
 ==========
 
 https://blog.csdn.net/Sinsa110/article/details/52202220 (XGBoost模型文件转化为PMML)

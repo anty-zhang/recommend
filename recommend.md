@@ -46,6 +46,8 @@
 
 ## CTR预估
 
+
+
 [华为若亚.2003.AutoFIS: Automatic Feature Interaction Selection in Factorization Models for Click-Through Rate Prediction](https://arxiv.org/abs/2003.11235)
 
 介绍: 本文采用AutoML的搜索方法选择重要性高的二次特征交互项、去除干扰项，提升FM、DeepFM这类模型的准确率
@@ -54,6 +56,11 @@
 
 [Facebook.2207.Towards Automated Neural Interaction Discovering for Click-Through Rate Prediction](https://arxiv.org/abs/2007.06434)
 
+- 加入时间/空间序列化模型
+
+（KDD 2019）Deep Spatio-Temporal Neural Networks for Click-Through Rate Prediction
+
+（KDD 2019 Workshop）Click-Through Rate Prediction with the User Memory Network
 
 ### transformers在CTR中的应用
 
@@ -416,4 +423,4 @@ https://ailab-aida.github.io/2019/11/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%
 
 [谷歌、阿里、微软等 10 大深度学习 CTR 模型最全演化图谱【推荐、广告、搜索领域】重要TODO](https://www.6aiq.com/article/1557332028652)
 
-
+[DeepCTR-Torch:基于深度学习的CTR预测算法库](https://cloud.tencent.com/developer/article/1514005)
